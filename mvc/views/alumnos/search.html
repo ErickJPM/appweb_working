@@ -1,0 +1,88 @@
+$def with(result,tam)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link href="static/assets/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/001">Mostrar alumnos</a>
+  <a class="navbar-brand" href="/002">Insertar un alumno</a>
+  <a class="navbar-brand" href="/">MENU PRINCIPAL</a>
+</nav>
+<body>
+  <h1 class="h1">Search</h1>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Matricula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Primer apellido</th>
+            <th scope="col">Segundo Apellido</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">sexo</th>
+            <th scope="col">Estado civil</th>
+            <th>borrar</th>
+            <th>Actualizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          $for i in range (0,tam):
+            <tr>
+              <td>$result[i]['id_persona']</td>
+              <td>$result[i]['matricula']</td>
+              <td><a href="004/$result[i]['id_persona']">$result[i]['nombre']</a></td>
+              <td>$result[i]['ap_uno']</td>
+              <td>$result[i]['ap_dos']<td>
+              <td>$result[i]['edad']</td>
+              <td>$result[i]['fec_nac']</td>
+              <td>$result[i]['genero']</td>
+              <td>$result[i]['estado_civil']</td>
+              <td><a href="/003/$result[i]['id_persona']"><img src="/static/assets/basura.png" height="60" width="50"></a></td>
+              <td><a href="/005/$result[i]['id_persona']"><img src="/static/assets/update.png" height="60" width="50"></a></td>
+
+            </tr>
+      </table>
+      <form method="POST" action="" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="id_persona">Id</label>
+            <input type="Number" class="form-control" name="id_persona"  placeholder="Introduce el id a buscar" required>
+            <div class="invalid-feedback">
+              ingresa correctamente el id.
+            </div>
+          </div>
+          <input type="submit" value="Buscar" width="50" height="30">
+        </form>
+        <input type="button" onclick="location.href='/006'" value="Refrescar datos" width="50" height="30" >
+
+        <script>
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (function() {
+            'use strict';
+    
+            window.addEventListener('load', function() {
+              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+              var forms = document.getElementsByClassName('needs-validation');
+    
+              // Loop over them and prevent submission
+              var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+                  form.classList.add('was-validated');
+                }, false);
+              });
+            }, false);
+          })();
+        </script>
+      
+    
+</body>
+</html>

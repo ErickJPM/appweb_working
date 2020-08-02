@@ -106,6 +106,22 @@ class Alumnos():
         except Exception as e:
             print(e)
             return False
+        
+    def update_todo(self,id_persona,nombre,apellido,apellido2,matricula,edad,fecha,genero,estado):
+        try:
+            print(id_persona)
+            self.connect()
+            query = ("update alumnos set "+str("nombre")+"= '"+str(nombre)+"'"+","+"ap_uno"+"= '"+str(apellido)+"'"+","+"ap_dos"+"= '"+str(apellido2)+"'"+","+"matricula"+"= '"+str(matricula)+"'"+","+"edad"+"= '"+str(edad)+"'"+","+"genero"+"= '"+str(genero)+"'"+","+"estado_civil"+"= '"+str(estado)+"'"+","+"fec_nac"+"= '"+str(fecha)+"'"+" where id_persona="+str(id_persona)+";")
+            print(query)
+            #values = (campo,valor,id_persona)
+            self.cursor.execute(query)
+            self.cnx.commit()
+            self.cursor.close()
+            self.cnx.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False
     
     def delete(self, id_persona):
         try:

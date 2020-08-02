@@ -4,46 +4,55 @@ $def with(result,tam)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List</title>
-    <link href="static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <title>LIST</title>
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/002">Insertar un nuevo alumno</a>
-  <a class="navbar-brand" href="/003">Borrar alumnos</a>
-  <a class="navbar-brand" href="/004">Buscar un alumno</a>
-  <a class="navbar-brand" href="/005">Actualizar</a>
+  <a class="navbar-brand" href="/006">Buscar un alumno</a>
   <a class="navbar-brand" href="/">MENU PRINCIPAL</a>
 </nav>
 <body>
-  <h1 class="h1">List</h1>
-    <table class="table table-dark">
+  <h1 class="h1">LIST</h1>
+    <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Matricula</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Primer apellido</th>
-            <th scope="col">Segundo Apellido</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">sexo</th>
-            <th scope="col">Estado civil</th>
+            <th>ID</th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Primer apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Edad</th>
+            <th>Fecha de Nacimiento</th>
+            <th>sexo</th>
+            <th>Estado civil</th>
+            <th>borrar</th>
+            <th>Actualizar</th>
           </tr>
         </thead>
         <tbody>
-          $for i in range (0,tam):
+          $for i in range(0,tam):
             <tr>
               <td>$result[i]['id_persona']</td>
               <td>$result[i]['matricula']</td>
-              <td>$result[i]['nombre']</td>
+              <td><a href="004/$result[i]['id_persona']">$result[i]['nombre']</a></td>
               <td>$result[i]['ap_uno']</td>
               <td>$result[i]['ap_dos']<td>
               <td>$result[i]['edad']</td>
               <td>$result[i]['fec_nac']</td>
               <td>$result[i]['genero']</td>
               <td>$result[i]['estado_civil']</td>
+              <td><a href="/003/$result[i]['id_persona']"><img src="/static/assets/basura.png" height="60" width="50"></a></td>
+              <td><a href="/005/$result[i]['id_persona']"><img src="/static/assets/update.png" height="60" width="50"></a></td>
+
             </tr>
-        </tbody>
       </table>
+      <main role="main" class="inner cover">
+        <p class="lead">
+
+          <a href="/" class="btn btn-lg btn-secondary">regresar</a>
+        </p>
+      
+    
 </body>
 </html>

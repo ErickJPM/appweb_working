@@ -1,273 +1,88 @@
-$def with(result,tam)
-<!DOCTYPE html>
+$def with(id,nombre,apellido1,apellido2,matricula,edad,genero,estado,fecha)
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
-    <link href="static/assets/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/001">Mostrar alumnos</a>
-  <a class="navbar-brand" href="/002">Insertar un alumno</a>
-  <a class="navbar-brand" href="/003">Borrar alumnos</a>
-  <a class="navbar-brand" href="/004">Buscar un alumno</a>
-  <a class="navbar-brand" href="/">MENU PRINCIPAL</a>
-</nav>
-<body>
-  <h1 class="h1">Update</h1>
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Matricula</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Primer apellido</th>
-            <th scope="col">Segundo Apellido</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">sexo</th>
-            <th scope="col">Estado civil</th>
-          </tr>
-        </thead>
-        <tbody>
-          $for i in range (0,tam):
-            <tr>
-              <td>$result[i]['id_persona']</td>
-              <td>$result[i]['matricula']</td>
-              <td>$result[i]['nombre']</td>
-              <td>$result[i]['ap_uno']</td>
-              <td>$result[i]['ap_dos']<td>
-              <td>$result[i]['edad']</td>
-              <td>$result[i]['fec_nac']</td>
-              <td>$result[i]['genero']</td>
-              <td>$result[i]['estado_civil']</td>
-            </tr>
-      </table>
-      <p class="lead">
-
-        <a href="/" class="btn btn-lg btn-secondary">regresar</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
    
-      </p>
-      <form method="POST" action="" class="needs-validation" novalidate>
-        <div class="mb-3">
-          <label for="id">Id a actualizar</label>
-          <input type="number" class="form-control" name="id" required>
-          <div class="invalid-feedback">
-            Ingresa bien el id
-          </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="campo" >Campo que desea actualizar</label>
-        <select name="campo" id="campo" onchange="bloquear()">
-          <option value='null' selected>Selecciona</option> 
-          <option value="matricula">Matricula</option> 
-          <option value="nombre">Nombre</option> 
-          <option value="ap_uno">Primer Apellido</option> 
-          <option value="ap_dos">Segundo Apellido</option> 
-          <option value="edad">Edad</option> 
-          <option value="genero">Sexo</option> 
-          <option value="estado_civil">Estado Civil</option> 
-          <option value="fec_nac">Fecha de Nacimiento</option>    
-      </select>
+    <title>UPDATE</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/assets/form-validation.css" rel="stylesheet">
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/001">Mostrar alumnos</a>
+    <a class="navbar-brand" href="/005">Buscar un alumno</a>
+    <a class="navbar-brand" href="/002">Insertar un nuevo alumno</a>
+    <a class="navbar-brand" href="/">MENU PRINCIPAL</a>
+  </nav>
+
+  <body class="bg-light">
+    <h1 class="h1">UPDATE</h1>
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2>Cambia los datos que desees</h2>
+      </div>
 
       <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="firstName">Nombre</label>
-          <input type="text" class="form-control" name="name" id="nombre" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            ingresa correctamente el nombre.
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="firstlastName">Primer apellido</label>
-          <input type="text" class="form-control" name="apellido1" id="ap_uno" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            ingresa correctamente el primer apellido.
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="secondlastName">segundo apellido</label>
-          <input type="text" class="form-control" id="ap_dos" name="apellido2" placeholder="" value="" required>
-          <div class="invalid-feedback">
-            ingresa correctamente el segundo apellido.
-          </div>
-          
-        </div>
-      </div>
-
-      
-
-      <div class="mb-3">
-        <label for="matricula">Matricula <span class="text-muted"></span></label>
-        <input type="number" class="form-control" name="matricula" id="matricula" placeholder="1718110879" required>
-        <div class="invalid-feedback">
-          ingresa bien la matricula
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="age">Edad</label>
-        <input type="number" class="form-control" name="age" id="edad" maxlength="3" minlength="1" min="1" max="130" name="edad" required>
-        <div class="invalid-feedback">
-          ingresa bien la edad porfavor
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="born">Fecha de Nacimiento</label>
-        <input type="date" class="form-control" id="fec_nac2" name="Nacimiento" required>
-        <div class="invalid-feedback">
-          ingresa bien la fecha de Nacimiento porfavor
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="genero">Sexo</label>
-        <select name="genero" id="genero">
-          <option value='null' selected>Selecciona</option> 
-          <option value="Masculino">Masculino</option> 
-          <option value="Femenino">Femenino</option>
-        </select>
         
-      </div>
-
-      <div class="mb-3">
-        <label for="estado" >Estado Civil</label>
-    
-        <select name="estado" id="estado_civil">
-            <option value='null' selected>Selecciona</option> 
-            <option value="Soltero">Soltero</option> 
-            <option value="Casado">Casado</option>
-            <option value="Divorciado">Divorciado</option>
-            <option value="Viudo">Viudo</option>
-            <option value="Concubinato">Concubinato</option>
-        </select>
-        
-      </div>
-      <input type="submit" value="guardar">
-      </form>
-      <script>
-        function bloquear() {
-          valor=document.getElementById("campo").value;
-          if (valor=="matricula"){
-            document.getElementById("matricula").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
+        <div class="col-md-8 order-md-1">
+          <form method="POST" action="" class="needs-validation" novalidate>
             
-          }
-          else if(valor=="nombre"){
-            document.getElementById("nombre").disabled = false;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-
-          }
-          else if(valor=="ap_uno"){
-            document.getElementById("ap_uno").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-            
-          }
-          else if(valor=="ap_dos"){
-            document.getElementById("ap_dos").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-            
-          }
-          else if(valor=="edad"){
-            document.getElementById("edad").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-            
-          }
-          else if(valor=="genero"){
-            document.getElementById("genero").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-            
-          }
-          else if(valor=="fec_nac"){
-            document.getElementById("fec_nac2").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("estado_civil").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            
-          }
-          else if(valor=="estado_civil"){
-            document.getElementById("estado_civil").disabled = false;
-            document.getElementById("nombre").disabled = true;
-            document.getElementById("ap_uno").disabled = true;
-            document.getElementById("ap_dos").disabled = true;
-            document.getElementById("edad").disabled = true;
-            document.getElementById("genero").disabled = true;
-            document.getElementById("matricula").disabled = true;
-            document.getElementById("fec_nac2").disabled = true;
-            
-          }
-         // document.getElementById("").disabled = true;
-          
-        }
-        
-        
-        </script>
-      
-      
-      <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function() {
-          'use strict';
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Nombre</label>
+                <input type="text" class="form-control" name="name" id="firstName" placeholder="" value="$nombre" >
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="firstlastName">Primer apellido</label>
+                <input type="text" class="form-control" name="apellido1" id="firstlastName" placeholder="" value="$apellido1" >
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="secondlastName">segundo apellido</label>
+                <input type="text" class="form-control" id="secondlastName" name="apellido2" placeholder="" value="$apellido2" >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="matricula">Matricula <span class="text-muted"></span></label>
+              <input type="number" class="form-control" name="matricula" id="matricula" value="$matricula" >
+            </div>
+            <div class="mb-3">
+              <label for="age">Edad</label>
+              <input type="number" class="form-control" value="$edad" name="age" id="age" maxlength="3" minlength="1" min="1" max="130" name="edad" >
+            </div>
+            <div class="mb-3">
+              <label for="born">Fecha de Nacimiento</label>
+              <input type="date" class="form-control" id="born" name="Nacimiento" value="$fecha" >
+            </div>
+            <div class="mb-3">
+              <label for="genero">Sexo</label>
+              <select name="genero">
+                <option value='$genero' selected>$genero</option> 
+                <option value="Masculino">Masculino</option> 
+                <option value="Femenino">Femenino</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="estado" >Estado Civil</label>
+              <select name="estado" aria-selected="true">
+                <option value='$estado' selected>$estado</option> 
+                <option value="Soltero">Soltero</option> 
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viudo">Viudo</option>
+                <option value="Concubinato">Concubinato</option>
+            </select>
+            </div>
+            <input type="submit" value="Actualizar" >
+          </form> 
   
-          window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-  
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-              form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-              }, false);
-            });
-          }, false);
-        })();
-      </script>
-</body>
+    </body>
 </html>
