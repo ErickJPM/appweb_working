@@ -78,7 +78,7 @@ class Alumnos():
     def insert(self, nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac):
         try:
             self.connect()
-            query = ("INSERT INTO alumnos (nombre,ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac) values(%s,%s,%s,%s,%s,%s,%s,%s);")
+            query = ("INSERT INTO alumnos (%s,ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac) values(%s,%s,%s,%s,%s,%s,%s,%s);")
             values = (nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac)
             self.cursor.execute(query, values)
             self.cnx.commit()
@@ -139,9 +139,22 @@ class Alumnos():
 
 objeto = Alumnos()
 
-
 """
-    
-        """
+    def insert(self, nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac):
+        try:
+            self.connect()
+            query = ("INSERT INTO alumnos (nombre,ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac) values(%s,%s,%s,%s,%s,%s,%s,%s);")
+            values = (nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac)
+            self.cursor.execute(query, values)
+            self.cnx.commit()
+            self.cursor.close()
+            self.cnx.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+"""
+
+
 
 

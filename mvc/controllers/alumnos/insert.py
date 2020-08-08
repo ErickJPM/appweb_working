@@ -1,8 +1,6 @@
 import web
 render = web.template.render('mvc/views/alumnos/')
-
 import mvc.model.model as alumnos
-
 model_alumnos= alumnos.Alumnos()
 class Insert():
 
