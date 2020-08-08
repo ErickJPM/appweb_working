@@ -3,7 +3,9 @@ render = web.template.render('mvc/views/alumnos/')
 import mvc.model.model as alumnos
 model_alumnos= alumnos.Alumnos()
 class Delete():
+
     def GET(self,id_persona):
+        
         result=model_alumnos.view(id_persona)[0]
         print(result)
         id=result["id_persona"]

@@ -78,7 +78,15 @@ class Alumnos():
     def insert(self, nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac):
         try:
             self.connect()
-            query = ("INSERT INTO alumnos (%s,ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac) values(%s,%s,%s,%s,%s,%s,%s,%s);")
+            print(nombre)
+            print(ap_uno)
+            print(ap_dos)
+            print(matricula)
+            print(edad)
+            print(genero)
+            print(estado_civil)
+            print(fec_nac)
+            query = ("INSERT INTO alumnos (nombre,ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac) values(%s,%s,%s,%s,%s,%s,%s,%s);")
             values = (nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac)
             self.cursor.execute(query, values)
             self.cnx.commit()
@@ -127,8 +135,7 @@ class Alumnos():
         try:
             self.connect()
             query = ("delete from alumnos WHERE id_persona ="+str(id_persona)+";")
-            values = (id_persona)
-            self.cursor.execute(query, values)
+            self.cursor.execute(query)
             self.cnx.commit()
             self.cursor.close()
             self.cnx.close()
@@ -138,6 +145,7 @@ class Alumnos():
             return False
 
 objeto = Alumnos()
+
 
 """
     def insert(self, nombre, ap_uno,ap_dos,matricula,edad,genero,estado_civil,fec_nac):
